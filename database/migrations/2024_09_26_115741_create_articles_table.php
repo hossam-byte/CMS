@@ -15,10 +15,12 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('author');
+            $table->string('email');
             $table->string('title');
-            $table->text('body');
-            $table->foreignId('author_id')->constrained('users')->onDelete('cascade'); // Author reference
-            $table->boolean('published')->default(false);
+            $table->text('content');
+            $table->string('category');
+            $table->string('tags')->nullable();
             $table->timestamps();
         });
     }

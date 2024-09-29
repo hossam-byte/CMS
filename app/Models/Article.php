@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'body', 'author_id', 'published'];
+    protected $fillable = ['author', 'email', 'title', 'content', 'category', 'tags'];
 
     // Define the relationship to the User model (Author)
     public function author()

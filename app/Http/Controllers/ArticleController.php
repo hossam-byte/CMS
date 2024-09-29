@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -21,9 +22,13 @@ class ArticleController extends Controller
     // Store a new article in the database
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
+        $validated = $request->validate([
+            'author' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'category' => 'required|string',
+            'tags' => 'nullable|string',
         ]);
 
         Article::create([
@@ -32,7 +37,7 @@ class ArticleController extends Controller
             'author_id' => auth()->id(),
         ]);
 
-        return redirect()->route('articles.index')->with('success', 'Article created successfully.');
+        return redirect()->route('articles.create')->with('success', 'Article created successfully.');
     }
 
     // Show a specific article
