@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentCrafter</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Logo" style="max-height: 40px;">
+                <span class="navbar-title">ContentCrafter</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li><a href="index.html" class="nav-link" title="Home"><i class="fas fa-home"></i> Home</a></li>
+                  <li><a href="profile.html" class="nav-link" title="Profile"><i class="fas fa-user-circle"></i> Profile</a></li>
+                  <li><a href="content.html" class="nav-link" title="Add Article"><i class="fas fa-plus"></i> Add Article</a></li>
+                  <li><a href="#" onclick="logout()" class="nav-link" ><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Editor Section -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 mb-4 d-flex flex-column align-items-center"> 
+                <h2>Write/Edit Article</h2>
+                <img src="img/article.jpg" alt="Article Banner" class="img-fluid mt-4" style="max-height: 300px;"> <!-- Replace with actual image source -->
+            </div>
+            
+
+            <div class="col-md-6">
+                <form id="articleForm">
+                    <div class="mb-3">
+                        <label for="articleTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="articleTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="articleImage" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="articleImage" accept="image/*" required>
+                        <img id="imagePreview" src="#" alt="Image Preview" class="mt-3" style="display:none; max-height: 200px;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="wysiwygEditor" class="form-label">Content</label>
+                        <textarea id="wysiwygEditor" required></textarea> 
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p>&copy; 2024 ContentCrafter. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Initialize TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/cor4npa6cdcincpfqqv64p4yftiepkdgaaajpc6zwpjla8u5/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#wysiwygEditor',
+            height: 300,
+            menubar: false,
+            plugins: 'lists link image charmap preview anchor pagebreak',
+            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save(); 
+                });
+            }
+        });
+
+        document.getElementById('articleImage').addEventListener('change', function (event) {
+            const input = event.target;
+            const file = input.files[0];
+            const reader = new FileReader();
+        
+            reader.onload = function (e) {
+                const imgPreview = document.getElementById('imagePreview');
+                imgPreview.src = e.target.result;
+                imgPreview.style.display = 'block';
+            };
+        
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

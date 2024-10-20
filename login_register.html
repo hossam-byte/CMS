@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register - ContentCrafter</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Logo" class="logo">
+                <span class="navbar-title">ContentCrafter</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li><a href="login_register.html" class="nav-link" title="Login"><i class="fas fa-user"></i> Login</a></li>
+                    <li><a href="index.html" class="nav-link" title="Home"><i class="fas fa-home"></i> Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login/Register Section -->
+    <div class="container my-5">
+        <div class="row align-items-start"> 
+            <div class="col-md-6" id="auth-image-container">
+                <img id="loginImage" src="img/login.png" alt="Login" class="img-fluid">
+            </div>
+            <div class="col-md-6" id="form-section">
+                <div id="auth-form">
+                    <form id="login-form">
+                        <h3>Login</h3>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <p class="mt-3">Don't have an account? <a href="#" id="switch-to-register">Register here</a></p>
+                    </form>
+                    <form id="register-form" style="display: none;">
+                        <h3>Register</h3>
+                        <div class="mb-3">
+                            <label for="new-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="new-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="new-username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="new-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <p class="mt-3">Already have an account? <a href="#" id="switch-to-login">Login here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 ContentCrafter. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
